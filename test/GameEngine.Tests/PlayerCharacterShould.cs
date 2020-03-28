@@ -138,5 +138,18 @@ namespace GameEngine.Tests
             //Assert
             Assert.InRange<int>(actual, 101, 200);
         }
+
+        /*********************** Assertions with null values ****************************/
+
+        [Fact]
+        public void NickNameNullAsDefault()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            //Act
+            string actual = sut.NickName;
+            //Assert
+            Assert.Null(actual);
+        }
     }
 }
