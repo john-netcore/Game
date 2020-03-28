@@ -126,5 +126,17 @@ namespace GameEngine.Tests
             //Assert
             Assert.NotEqual(expected, actual);
         }
+
+        [Fact]
+        public void IncreaseHealthAfterSleeping()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            //Act
+            sut.Sleep(); //Expect health increase from 1 to 100 inclusive.
+            int actual = sut.Health;
+            //Assert
+            Assert.InRange<int>(actual, 101, 200);
+        }
     }
 }

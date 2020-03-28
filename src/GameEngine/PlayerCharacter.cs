@@ -1,4 +1,6 @@
-﻿namespace GameEngine
+﻿using System;
+
+namespace GameEngine
 {
     public class PlayerCharacter
     {
@@ -16,6 +18,18 @@
             set { _health = value; }
         }
         public bool isNoob { get; set; }
+
+        public void Sleep()
+        {
+            Health += CalculateHealthIncrease();
+        }
+
+        private int CalculateHealthIncrease()
+        {
+            var rnd = new Random();
+            int healthIncrease = rnd.Next(1, 101);
+            return healthIncrease;
+        }
 
         private int _health = 100;
     }
