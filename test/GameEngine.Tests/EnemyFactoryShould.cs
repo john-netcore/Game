@@ -39,5 +39,19 @@ namespace GameEngine.Tests
             //Assert
             Assert.IsAssignableFrom<Enemy>(actual);
         }
+
+        /*********************** Assertions against Object Instances ****************************/
+
+        [Fact]
+        public void CreateSeparateInstances()
+        {
+            //Arrange
+            EnemyFactory sut = new EnemyFactory();
+            //Act
+            Enemy enemy1 = sut.Create("Zombie");
+            Enemy enemy2 = sut.Create("Zombie");
+            //Assert
+            Assert.NotSame(enemy1, enemy2);
+        }
     }
 }
