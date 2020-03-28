@@ -17,5 +17,16 @@ namespace GameEngine.Tests
             //Assert
             Assert.IsType<NormalEnemy>(actual);
         }
+
+        [Fact]
+        public void NotCreateNormalEnemy()
+        {
+            //Arrange
+            EnemyFactory sut = new EnemyFactory();
+            //Act
+            Enemy actual = sut.Create("Zombie King", isBoss: true);
+            //Assert
+            Assert.IsNotType<NormalEnemy>(actual);
+        }
     }
 }
