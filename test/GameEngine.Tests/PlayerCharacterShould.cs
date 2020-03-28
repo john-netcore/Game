@@ -171,5 +171,14 @@ namespace GameEngine.Tests
             //Assert
             Assert.DoesNotContain("Staff of Wonder", sut.Weapons);
         }
+
+        [Fact]
+        public void HaveAtLeastOneKindOfSword()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            //Assert
+            Assert.Contains(sut.Weapons, weapon => weapon.Contains("Sword"));
+        }
     }
 }
