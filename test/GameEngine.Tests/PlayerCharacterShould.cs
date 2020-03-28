@@ -180,5 +180,19 @@ namespace GameEngine.Tests
             //Assert
             Assert.Contains(sut.Weapons, weapon => weapon.Contains("Sword"));
         }
+
+        [Fact]
+        public void HaveAllExpectedWeapons()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            var expected = new[] {
+                "Long Bow",
+                "Short Bow",
+                "Short Sword"
+            };
+            //Assert
+            Assert.Equal(expected, sut.Weapons);
+        }
     }
 }
