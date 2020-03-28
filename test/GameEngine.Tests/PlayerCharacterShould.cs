@@ -4,6 +4,9 @@ namespace GameEngine.Tests
 {
     public class PlayerCharacterShould
     {
+
+        /*********************** Assertions against strings ****************************/
+
         [Fact]
         public void BeInexperiencedWhenNew()
         {
@@ -96,6 +99,32 @@ namespace GameEngine.Tests
             string actual = sut.FullName;
             //Assert
             Assert.Matches("[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+", actual);
+        }
+
+        /*********************** Assertions against numbers ****************************/
+
+        [Fact]
+        public void StartWithDefaultHealth()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            int expected = 100;
+            //Act
+            int actual = sut.Health;
+            //Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void DontStartDefaultHealthWithZero()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            int expected = 0;
+            //Act
+            int actual = sut.Health;
+            //Assert
+            Assert.NotEqual(expected, actual);
         }
     }
 }

@@ -17,6 +17,6 @@
         }
         public bool isNoob { get; set; }
 
-        private int _health;
+        private int _health = 100;
     }
 }
