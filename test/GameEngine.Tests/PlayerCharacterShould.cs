@@ -44,6 +44,20 @@ namespace GameEngine.Tests
         }
 
         [Fact]
+        public void CalculateFullName_WithContains()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            sut.FirstName = "Kalle";
+            sut.LastName = "Anka";
+            string expected = "e A";
+            //Act
+            string actual = sut.FullName;
+            //Assert
+            Assert.Contains(expected, actual);
+        }
+
+        [Fact]
         public void HaveFullNameStartingWithFirstName()
         {
             //Arrange
