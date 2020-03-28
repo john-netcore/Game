@@ -74,5 +74,15 @@ namespace GameEngine.Tests
             //Assert
             Assert.Throws<ArgumentNullException>("name", () => sut.Create(null));
         }
+
+        [Fact]
+        public void OnlyAllowQueenOrKingAsBossEnemy()
+        {
+            //Arrange
+            EnemyFactory sut = new EnemyFactory();
+            //Assert
+            var ex = Assert.Throws<EnemyCreationException>(() => sut.Create("Zombie", isBoss: true));
+            Assert.Equal("Zombie", ex.RequestedEnemyName);
+        }
     }
 }
