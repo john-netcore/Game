@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace GameEngine.Tests
@@ -202,6 +203,21 @@ namespace GameEngine.Tests
             PlayerCharacter sut = new PlayerCharacter();
             //Assert
             Assert.All(sut.Weapons, weapon => Assert.False(string.IsNullOrWhiteSpace(weapon)));
+        }
+
+        /*********************** Assertions on Raised Events ****************************/
+
+        [Fact]
+        public void RaiseSleptEvent()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            //Arrange
+            //Generic Type: The type of the event argument.
+            //First arg: The handler to attach
+            //Second arg: The handler to detach
+            //Third arg: The code that raises the event.
+            Assert.Raises<EventArgs>(handler => sut.PlayerSlept += handler, handler => sut.PlayerSlept -= handler, () => sut.Sleep());
         }
     }
 }

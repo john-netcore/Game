@@ -10,6 +10,8 @@ namespace GameEngine
             isNoob = true;
             CreateStartingWeapons();
         }
+        public event EventHandler<EventArgs> PlayerSlept;
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName => $"{FirstName} {LastName}";
@@ -25,6 +27,13 @@ namespace GameEngine
         public void Sleep()
         {
             Health += CalculateHealthIncrease();
+
+            OnPlayerSlept(EventArgs.Empty);
+        }
+
+        protected virtual void OnPlayerSlept(EventArgs e)
+        {
+            PlayerSlept?.Invoke(this, e);
         }
 
         private int CalculateHealthIncrease()
