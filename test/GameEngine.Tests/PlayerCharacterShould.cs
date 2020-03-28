@@ -152,7 +152,7 @@ namespace GameEngine.Tests
             Assert.Null(actual);
         }
 
-        /*********************** Assertions with collections ****************************/
+        /*********************** Assertions against Collections ****************************/
 
         [Fact]
         public void HaveALongBow()
