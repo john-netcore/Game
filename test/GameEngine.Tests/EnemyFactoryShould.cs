@@ -65,5 +65,14 @@ namespace GameEngine.Tests
             //Assert
             Assert.Throws<ArgumentNullException>(() => sut.Create(null));
         }
+
+        [Fact]
+        public void NotAllowNullNameWithNameParamAsErrorMessage()
+        {
+            //Arrange
+            EnemyFactory sut = new EnemyFactory();
+            //Assert
+            Assert.Throws<ArgumentNullException>("name", () => sut.Create(null));
+        }
     }
 }
