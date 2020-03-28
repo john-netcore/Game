@@ -30,6 +30,20 @@ namespace GameEngine.Tests
         }
 
         [Fact]
+        public void CalculateFullNameIgnoreCase()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            sut.FirstName = "Kalle";
+            sut.LastName = "Anka";
+            string expected = "KALLE ANKA";
+            //Act
+            string actual = sut.FullName;
+            //Assert
+            Assert.Equal(expected, actual, ignoreCase: true);
+        }
+
+        [Fact]
         public void HaveFullNameStartingWithFirstName()
         {
             //Arrange
