@@ -151,5 +151,16 @@ namespace GameEngine.Tests
             //Assert
             Assert.Null(actual);
         }
+
+        /*********************** Assertions with collections ****************************/
+
+        [Fact]
+        public void HaveLongBowAsWeapon()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            //Assert
+            Assert.Contains("Long Bow", sut.Weapons);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GameEngine
 {
@@ -7,6 +8,7 @@ namespace GameEngine
         public PlayerCharacter()
         {
             isNoob = true;
+            CreateStartingWeapons();
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,6 +20,7 @@ namespace GameEngine
             set { _health = value; }
         }
         public bool isNoob { get; set; }
+        public List<string> Weapons { get; set; }
 
         public void Sleep()
         {
@@ -29,6 +32,16 @@ namespace GameEngine
             var rnd = new Random();
             int healthIncrease = rnd.Next(1, 101);
             return healthIncrease;
+        }
+
+        private void CreateStartingWeapons()
+        {
+            Weapons = new List<string>()
+            {
+                "Long Bow",
+                "Short Bow",
+                "Short Sword"
+            };
         }
 
         private int _health = 100;
