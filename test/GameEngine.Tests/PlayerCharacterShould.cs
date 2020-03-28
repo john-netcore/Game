@@ -194,5 +194,14 @@ namespace GameEngine.Tests
             //Assert
             Assert.Equal(expected, sut.Weapons);
         }
+
+        [Fact]
+        public void HaveNoEmptyDefaultWeapons()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            //Assert
+            Assert.All(sut.Weapons, weapon => Assert.False(string.IsNullOrWhiteSpace(weapon)));
+        }
     }
 }
