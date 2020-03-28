@@ -42,5 +42,19 @@ namespace GameEngine.Tests
             //Assert
             Assert.StartsWith(expected, actual);
         }
+
+        [Fact]
+        public void HaveFullNameEndingWithLastName()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            sut.FirstName = "Kalle";
+            sut.LastName = "Anka";
+            string expected = "Anka";
+            //Act
+            string actual = sut.FullName;
+            //Assert
+            Assert.EndsWith(expected, actual);
+        }
     }
 }
