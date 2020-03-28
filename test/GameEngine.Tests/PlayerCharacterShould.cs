@@ -84,5 +84,18 @@ namespace GameEngine.Tests
             //Assert
             Assert.EndsWith(expected, actual);
         }
+
+        [Fact]
+        public void CalculateFullNameStartsFirstAndLastNameWithCapitalLetter()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+            sut.FirstName = "Kalle";
+            sut.LastName = "Anka";
+            //Act
+            string actual = sut.FullName;
+            //Assert
+            Assert.Matches("[A-Z]{1}[a-z]+ [A-Z]{1}[a-z]+", actual);
+        }
     }
 }
