@@ -28,5 +28,16 @@ namespace GameEngine.Tests
             //Assert
             Assert.IsNotType<NormalEnemy>(actual);
         }
+
+        [Fact]
+        public void BeDerivedFromEnemyType()
+        {
+            //Arrange
+            EnemyFactory sut = new EnemyFactory();
+            //Act
+            Enemy actual = sut.Create("Zombie King", isBoss: true);
+            //Assert
+            Assert.IsAssignableFrom<Enemy>(actual);
+        }
     }
 }
