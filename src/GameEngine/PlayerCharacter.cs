@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace GameEngine
 {
-    public class PlayerCharacter
+    public class PlayerCharacter : INotifyPropertyChanged
     {
         public PlayerCharacter()
         {
@@ -11,6 +12,7 @@ namespace GameEngine
             CreateStartingWeapons();
         }
         public event EventHandler<EventArgs> PlayerSlept;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -18,17 +20,27 @@ namespace GameEngine
         public string NickName { get; set; }
         public int Health
         {
-            get { return _health; }
-            set { _health = value; }
+            get => _health;
+            set { _health = value; OnPropertyChanged(this, "Health"); }
         }
         public bool isNoob { get; set; }
         public List<string> Weapons { get; set; }
+
+        public void TakeDamage(int damage)
+        {
+            Health = Math.Max(1, Health -= damage);
+        }
 
         public void Sleep()
         {
             Health += CalculateHealthIncrease();
 
             OnPlayerSlept(EventArgs.Empty);
+        }
+
+        protected virtual void OnPropertyChanged(object sender, string propertyName)
+        {
+            PropertyChanged?.Invoke(sender, new PropertyChangedEventArgs(propertyName));
         }
 
         protected virtual void OnPlayerSlept(EventArgs e)

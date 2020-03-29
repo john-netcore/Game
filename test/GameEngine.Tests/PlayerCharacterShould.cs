@@ -212,12 +212,27 @@ namespace GameEngine.Tests
         {
             //Arrange
             PlayerCharacter sut = new PlayerCharacter();
-            //Arrange
+
+            //Assert
+
             //Generic Type: The type of the event argument.
             //First arg: The handler to attach
             //Second arg: The handler to detach
             //Third arg: The code that raises the event.
             Assert.Raises<EventArgs>(handler => sut.PlayerSlept += handler, handler => sut.PlayerSlept -= handler, () => sut.Sleep());
+        }
+
+        [Fact]
+        public void RaisePropertyChangedEvent()
+        {
+            //Arrange
+            PlayerCharacter sut = new PlayerCharacter();
+
+            //Assert
+            //First arg: The object with the property.
+            //Second arg: The name of the property that changes value.
+            //Third arg: The action.
+            Assert.PropertyChanged(sut, "Health", () => sut.TakeDamage(10));
         }
     }
 }
