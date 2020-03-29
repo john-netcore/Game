@@ -20,7 +20,7 @@ namespace GameEngine.Tests
             Assert.IsType<NormalEnemy>(actual);
         }
 
-        [Fact]
+        [Fact(Skip = "No need to run this test.")]
         public void NotCreateNormalEnemy()
         {
             //Arrange
