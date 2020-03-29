@@ -8,6 +8,7 @@ namespace GameEngine.Tests
         /*********************** Assertions against floating points ****************************/
 
         [Fact]
+        [Trait("Category", "Boss")]
         public void HaveCorrectPower()
         {
             //Arrange
