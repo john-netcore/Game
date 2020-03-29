@@ -7,15 +7,20 @@ namespace GameEngine.Tests
     public class EnemyFactoryShould
     {
 
+        private EnemyFactory _sut;
+
+        public EnemyFactoryShould()
+        {
+            _sut = new EnemyFactory();
+        }
+
         /*********************** Assertions against Object Types ****************************/
 
         [Fact]
         public void CreateNormalEnemyByDefault()
         {
-            //Arrange
-            EnemyFactory sut = new EnemyFactory();
             //Act
-            Enemy actual = sut.Create("Zombie");
+            Enemy actual = _sut.Create("Zombie");
             //Assert
             Assert.IsType<NormalEnemy>(actual);
         }
@@ -23,10 +28,8 @@ namespace GameEngine.Tests
         [Fact(Skip = "No need to run this test.")]
         public void NotCreateNormalEnemy()
         {
-            //Arrange
-            EnemyFactory sut = new EnemyFactory();
             //Act
-            Enemy actual = sut.Create("Zombie King", isBoss: true);
+            Enemy actual = _sut.Create("Zombie King", isBoss: true);
             //Assert
             Assert.IsNotType<NormalEnemy>(actual);
         }
@@ -34,10 +37,8 @@ namespace GameEngine.Tests
         [Fact]
         public void BeDerivedFromEnemyType()
         {
-            //Arrange
-            EnemyFactory sut = new EnemyFactory();
             //Act
-            Enemy actual = sut.Create("Zombie King", isBoss: true);
+            Enemy actual = _sut.Create("Zombie King", isBoss: true);
             //Assert
             Assert.IsAssignableFrom<Enemy>(actual);
         }
@@ -47,11 +48,9 @@ namespace GameEngine.Tests
         [Fact]
         public void CreateSeparateInstances()
         {
-            //Arrange
-            EnemyFactory sut = new EnemyFactory();
             //Act
-            Enemy enemy1 = sut.Create("Zombie");
-            Enemy enemy2 = sut.Create("Zombie");
+            Enemy enemy1 = _sut.Create("Zombie");
+            Enemy enemy2 = _sut.Create("Zombie");
             //Assert
             Assert.NotSame(enemy1, enemy2);
         }
@@ -61,28 +60,22 @@ namespace GameEngine.Tests
         [Fact]
         public void NotAllowNullName()
         {
-            //Arrange
-            EnemyFactory sut = new EnemyFactory();
             //Assert
-            Assert.Throws<ArgumentNullException>(() => sut.Create(null));
+            Assert.Throws<ArgumentNullException>(() => _sut.Create(null));
         }
 
         [Fact]
         public void NotAllowNullNameWithNameParamAsErrorMessage()
         {
-            //Arrange
-            EnemyFactory sut = new EnemyFactory();
             //Assert
-            Assert.Throws<ArgumentNullException>("name", () => sut.Create(null));
+            Assert.Throws<ArgumentNullException>("name", () => _sut.Create(null));
         }
 
         [Fact]
         public void OnlyAllowQueenOrKingAsBossEnemy()
         {
-            //Arrange
-            EnemyFactory sut = new EnemyFactory();
             //Assert
-            var ex = Assert.Throws<EnemyCreationException>(() => sut.Create("Zombie", isBoss: true));
+            var ex = Assert.Throws<EnemyCreationException>(() => _sut.Create("Zombie", isBoss: true));
             Assert.Equal("Zombie", ex.RequestedEnemyName);
         }
     }
