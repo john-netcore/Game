@@ -1,8 +1,9 @@
+using System;
 using Xunit;
 
 namespace GameEngine.Tests
 {
-    public class BossEnemyShould
+    public class BossEnemyShould : IDisposable
     {
 
         private BossEnemy _sut;
@@ -24,6 +25,11 @@ namespace GameEngine.Tests
             double actual = _sut.TotalSpecialAttackPower;
             //Assert
             Assert.Equal(expected, actual, precision: 3);
+        }
+
+        public void Dispose()
+        {
+            //Clean up code.
         }
     }
 }

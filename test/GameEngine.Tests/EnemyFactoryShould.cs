@@ -4,7 +4,7 @@ using Xunit;
 namespace GameEngine.Tests
 {
     [Trait("Category", "Enemy")]
-    public class EnemyFactoryShould
+    public class EnemyFactoryShould : IDisposable
     {
 
         private EnemyFactory _sut;
@@ -77,6 +77,11 @@ namespace GameEngine.Tests
             //Assert
             var ex = Assert.Throws<EnemyCreationException>(() => _sut.Create("Zombie", isBoss: true));
             Assert.Equal("Zombie", ex.RequestedEnemyName);
+        }
+
+        public void Dispose()
+        {
+            //Clean up code.
         }
     }
 }

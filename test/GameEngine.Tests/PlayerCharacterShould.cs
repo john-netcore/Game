@@ -3,7 +3,7 @@ using Xunit;
 
 namespace GameEngine.Tests
 {
-    public class PlayerCharacterShould
+    public class PlayerCharacterShould : IDisposable
     {
         private PlayerCharacter _sut;
 
@@ -211,6 +211,11 @@ namespace GameEngine.Tests
             //Second arg: The name of the property that changes value.
             //Third arg: The action.
             Assert.PropertyChanged(_sut, "Health", () => _sut.TakeDamage(10));
+        }
+
+        public void Dispose()
+        {
+            //Clean up code.
         }
     }
 }
