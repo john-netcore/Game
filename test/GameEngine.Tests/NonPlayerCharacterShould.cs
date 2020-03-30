@@ -12,7 +12,7 @@ namespace GameEngine.Tests
         }
 
         [Theory]
-        [MemberData(nameof(ExternalHealthDamageTestData.TestData), MemberType = typeof(ExternalHealthDamageTestData))]
+        [HealthDamageData]
         public void TakeDamage(int damage, int expectedDamage)
         {
             //Act
