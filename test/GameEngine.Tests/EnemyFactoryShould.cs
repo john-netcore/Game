@@ -25,6 +25,7 @@ namespace GameEngine.Tests
             Assert.IsType<NormalEnemy>(actual);
         }
 
+        [Fact]
         public void NotCreateNormalEnemy()
         {
             //Act
